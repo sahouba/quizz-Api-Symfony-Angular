@@ -1,0 +1,25 @@
+.quizz-form{
+
+ margin: auto;
+  width: 300px ;
+  margin-top: 50px
+}
+.not-visible{
+  display: none ;
+}
+.quizz{
+  margin: auto;
+   width: 600px ;
+   margin-top: 50px
+}
+.visible{
+  display: none ;
+}
+ul.choices li{
+  cursor: pointer;
+}
+li.selected{
+  font-weight: bold;
+  color:blue;
+}
+/**/

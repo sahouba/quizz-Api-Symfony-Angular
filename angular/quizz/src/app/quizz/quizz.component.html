@@ -1,0 +1,31 @@
+<div class="quizz-form" [ngClass]="{'not-visible': isQcmReceived}">
+  <div class="form-group">
+
+    <select class="form-control" [(ngModel)]="selectCategory">
+      <option value="0">Choisir une Catégorie</option>
+      <option  *ngFor="let category of categories" value="{{category.id}}">{{category.label}}</option>
+
+    </select>
+  </div>
+  <div class="form-group">
+    <select class="form-control" [(ngModel)]="selectDifficulty">
+          <option value="0">choisir un  Niveau Difficulté</option>
+          <option *ngFor="let difficulty of difficulties" value="{{difficulty.id}}">{{difficulty.label}}</option>
+        </select>
+  </div>
+  <div class="form-group">
+    <input class="form-control" type="text" name="nbQuestions" [(ngModel)]="nbQuestions" placeholder="Nombre de questions">
+  </div>
+  <button (click)="submit()" class="btn btn-primary" type="button"> Lancer Le QCM</button>
+</div>
+<div *ngIf="questions.length >0" class="quizz" [ngClass]="{'not-visible':!isQcmReceived}">
+  <h3><p> Question {{indexQuestion+1}} sur {{questions.length}}: </p></h3>
+  <h6><span>{{questions[indexQuestion].label}}</span></h6>
+  <br>
+  <ul #choice_list class="choices">
+    <li #choice_list_item (click)="makeChoice(choice, choice_list, choice_list_item)" *ngFor="let choice of questions[indexQuestion].choices">
+      {{choice.label}}
+    </li>
+  </ul>
+  <button [disabled]="btnVAlidDisabled" (click)="validQuestion()" class=" btn btn-primary "> Valider </button>
+</div>
